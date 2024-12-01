@@ -24,8 +24,6 @@
 ////     - Finally, the largest number in the left list is 4, while the largest number in the right list is 9; these are a distance 5 apart.
 //// To find the total distance between the left list and the right list, add up the distances between all of the pairs you found. In the example above, this is 2 + 1 + 0 + 1 + 2 + 5, a total distance of 11!
 //// Your actual left and right lists contain many location IDs. What is the total distance between your lists?
-//// Your puzzle answer was 1506483.
-//// The first half of this puzzle is complete! It provides one gold star: *
 //// --- Part Two ---
 //// Your analysis only confirmed what everyone feared: the two lists of location IDs are indeed very different.
 //// Or are they?
@@ -67,8 +65,6 @@ pub fn part_one() {
 pub fn part_two() {
   let assert Ok(input) = simplifile.read(from: filepath)
   let #(left_list, right_list) = split_lists(input)
-  let left_list = list.sort(left_list, int.compare)
-  let right_list = list.sort(right_list, int.compare)
   calculate_total_similarity_score(left_list, right_list)
 }
 
