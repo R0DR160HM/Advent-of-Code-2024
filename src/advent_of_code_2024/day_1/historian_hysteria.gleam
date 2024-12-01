@@ -56,19 +56,20 @@ import simplifile
 
 const filepath = "./src/advent_of_code_2024/day_1/historian_hysteria_input.txt"
 
-pub fn run() {
+pub fn part_one() {
   let assert Ok(input) = simplifile.read(from: filepath)
   let #(left_list, right_list) = split_lists(input)
   let left_list = list.sort(left_list, int.compare)
   let right_list = list.sort(right_list, int.compare)
-
-  // Part one
   calculate_distance(left_list, right_list)
-  |> io.debug()
+}
 
-  // Part two
+pub fn part_two() {
+  let assert Ok(input) = simplifile.read(from: filepath)
+  let #(left_list, right_list) = split_lists(input)
+  let left_list = list.sort(left_list, int.compare)
+  let right_list = list.sort(right_list, int.compare)
   calculate_total_similarity_score(left_list, right_list)
-  |> io.debug
 }
 
 fn calculate_total_similarity_score(llist, rlist) {
