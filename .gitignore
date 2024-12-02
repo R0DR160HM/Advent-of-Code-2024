@@ -1,4 +1,6 @@
 *.beam
 *.ez
+*.txt
+*/*.txt
 /build
 erl_crash.dump
