@@ -53,7 +53,7 @@ pub fn run() {
 
 // Part two
 fn is_safe_with_error_dampener(report) {
-  case is_safe(report, order.Eq) {
+  case is_safe(report) {
     True -> True
     False -> {
       let validated_reports =
@@ -61,7 +61,7 @@ fn is_safe_with_error_dampener(report) {
           let #(head, tail) = list.split(report, index)
           let assert [_ignore, ..tail] = tail
           list.flatten([head, tail])
-          |> is_safe(order.Eq)
+          |> is_safe
         })
       list.contains(validated_reports, True)
     }
@@ -96,17 +96,21 @@ fn safe_reports_loop(reports, total) {
   }
 }
 
+fn is_safe(report) {
+  is_safe_loop(report, order.Eq)
+}
+
 // Part one
-fn is_safe(report, direction) {
+fn is_safe_loop(report, direction) {
   case report {
     [current, next, ..rest] -> {
       let diff = current - next
       case diff, direction {
         d, _ if d == 0 || d > 3 || d < -3 -> False
-        d, order.Gt if d > 0 -> is_safe([next, ..rest], direction)
-        d, order.Lt if d < 0 -> is_safe([next, ..rest], direction)
-        d, order.Eq if d > 0 -> is_safe([next, ..rest], order.Gt)
-        d, order.Eq if d < 0 -> is_safe([next, ..rest], order.Lt)
+        d, order.Gt if d > 0 -> is_safe_loop([next, ..rest], direction)
+        d, order.Lt if d < 0 -> is_safe_loop([next, ..rest], direction)
+        d, order.Eq if d > 0 -> is_safe_loop([next, ..rest], order.Gt)
+        d, order.Eq if d < 0 -> is_safe_loop([next, ..rest], order.Lt)
         _, _ -> False
       }
     }
