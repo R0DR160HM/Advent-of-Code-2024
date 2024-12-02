@@ -44,14 +44,7 @@ import simplifile
 
 const filepath = "./src/advent_of_code_2024/day_2/red_nosed_reports_input.txt"
 
-pub fn part_one() {
-  let assert Ok(input) = simplifile.read(from: filepath)
-  string.split(input, "\r\n")
-  |> parse_reports
-  |> total_safe_reports
-}
-
-pub fn part_two() {
+pub fn run() {
   let assert Ok(input) = simplifile.read(from: filepath)
   string.split(input, "\r\n")
   |> parse_reports
