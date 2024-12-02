@@ -47,7 +47,6 @@
 //// Once again consider your left and right lists. What is their similarity score?
 
 import gleam/int
-import gleam/io
 import gleam/list
 import gleam/string
 import simplifile

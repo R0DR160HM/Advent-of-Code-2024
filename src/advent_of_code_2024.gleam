@@ -1,9 +1,7 @@
-import advent_of_code_2024/day_1/historian_hysteria
+import advent_of_code_2024/day_2/red_nosed_reports
 import gleam/io
 
 pub fn main() {
-  historian_hysteria.part_one()
-  |> io.debug
-  historian_hysteria.part_two()
+  red_nosed_reports.part_one()
   |> io.debug
 }
